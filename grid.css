@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    border: 5px solid blue;
+}
+
+.cell {
+    aspect-ratio: 1;
+    flex: 1 1 calc(100% / var(--grid-width));
+}
+
+.cell.shaded {
+    background-color: black;
+}
