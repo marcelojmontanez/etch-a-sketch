@@ -19,9 +19,17 @@ function resizeGrid() {
         cell.classList.add('cell');
 
         cell.addEventListener('mouseenter', () => {
-            cell.classList.add('shaded');
-            const rc = () => Math.floor(Math.random() * 256);
-            cell.style.backgroundColor = `rgb(${rc()}, ${rc()}, ${rc()})`;
+            if (!cell.classList.contains('shaded')) {
+                cell.classList.add('shaded');
+                const rc = () => Math.floor(Math.random() * 256);
+                cell.style.background = `rgb(${rc()}, ${rc()}, ${rc()})`;
+            }
+            else {
+                cell.style.background = 
+                `rgb(${cell.style.background
+                .match(/\d+/g)
+                .map(x => Math.floor(Number(x * 0.8)))})`;
+            }
         });
         grid.appendChild(cell);
     }
